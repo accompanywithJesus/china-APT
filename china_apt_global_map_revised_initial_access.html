@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ef25ddec4e58d501781e2d3d6bf462de {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 700px;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-ant-path@1.1.2/dist/leaflet-ant-path.min.js"></script>
+</head>
+<body>
+    
+    
+<div style="position:absolute; bottom:16px; left:16px; z-index:1000;background:rgba(8,8,8,0.92);color:#ddd; padding:14px 18px;border-radius:10px; font-family:-apple-system,sans-serif;font-size:11px; border:0.5px solid #333;max-width:200px; max-height:280vh; overflow-y:auto;">
+    <div style='font-size:13px;font-weight:700;color:#fff;margin-bottom:10px;'>🌐 중국 APT 작전 현황</div>
+    <div style='margin-bottom:6px;'>
+        <span style='color:#e05c5c;font-weight:600;'>● APT1</span>
+        <span style='color:#666;font-size:9px;'> (Unit 61398)</span>
+        <br><span style='color:#666;margin-left:14px;font-size:10px;'>국방·방산 기밀 탈취</span>
+    </div><div style='margin-bottom:6px;'>
+        <span style='color:#c0392b;font-weight:600;'>● APT3</span>
+        <span style='color:#666;font-size:9px;'> (UPS Team)</span>
+        <br><span style='color:#666;margin-left:14px;font-size:10px;'>금융·IT 지식재산 탈취</span>
+    </div><div style='margin-bottom:6px;'>
+        <span style='color:#e67e22;font-weight:600;'>● APT10</span>
+        <span style='color:#666;font-size:9px;'> (Menupass / Stone Panda)</span>
+        <br><span style='color:#666;margin-left:14px;font-size:10px;'>MSP 통해 클라우드 대량 탈취 (Cloud Hop...</span>
+    </div><div style='margin-bottom:6px;'>
+        <span style='color:#8e44ad;font-weight:600;'>● APT27</span>
+        <span style='color:#666;font-size:9px;'> (Emissary Panda)</span>
+        <br><span style='color:#666;margin-left:14px;font-size:10px;'>지재권 절도 (국방·항공우주 집중)</span>
+    </div><div style='margin-bottom:6px;'>
+        <span style='color:#27ae60;font-weight:600;'>● APT30</span>
+        
+        <br><span style='color:#666;margin-left:14px;font-size:10px;'>동남아 정부 대상 지정학적 정보 수집</span>
+    </div><div style='margin-bottom:6px;'>
+        <span style='color:#2980b9;font-weight:600;'>● APT40</span>
+        <span style='color:#666;font-size:9px;'> (TEMP.Periscope / Leviathan)</span>
+        <br><span style='color:#666;margin-left:14px;font-size:10px;'>일대일로 관련 해양·에너지 인프라 정보 탈취</span>
+    </div><div style='margin-bottom:6px;'>
+        <span style='color:#e05c5c;font-weight:600;'>● APT41</span>
+        <span style='color:#666;font-size:9px;'> (Double Dragon / Barium / Wicked Panda)</span>
+        <br><span style='color:#666;margin-left:14px;font-size:10px;'>BPFDoor → 가입자 데이터 탈취 (스파이+금전...</span>
+    </div><div style='margin-bottom:6px;'>
+        <span style='color:#1abc9c;font-weight:600;'>● Salt Typhoon</span>
+        <span style='color:#666;font-size:9px;'> (GhostEmperor)</span>
+        <br><span style='color:#666;margin-left:14px;font-size:10px;'>합법적 백도어(CALEA) 악용 → 정부 관계자 도...</span>
+    </div><div style='margin-bottom:6px;'>
+        <span style='color:#f5a623;font-weight:600;'>● Volt Typhoon</span>
+        <span style='color:#666;font-size:9px;'> (Bronze Silhouette)</span>
+        <br><span style='color:#666;margin-left:14px;font-size:10px;'>핵심 인프라 장기 디지털 매복 (유사시 마비 목적)</span>
+    </div>
+    <hr style='margin:10px 0;border-color:#333;'>
+    <div style='color:#444;font-size:9px;margin-bottom:5px;'><span style='color:#f39c12;font-weight:bold;'>●</span> C2 경유지 노드 (예: 홍콩, 싱가포르)</div>
+    <div style='color:#444;font-size:9px;'>공통 전략: 장기 잠복 · 웹쉘 · Valid Accounts · Credential Access<br>타겟 마커 클릭 시 MITRE ATT&CK 상세 표시</div>
+</div>
+    
+<div style="position:fixed; top:20px; left:50%;transform:translateX(-50%);z-index:1000;background:rgba(0,0,0,0.85);color:white; padding:10px 28px;border-radius:8px;font-family:-apple-system,sans-serif;font-size:14px; font-weight:700;border:0.5px solid #444;pointer-events:none;white-space:nowrap;">
+    중국 배후 APT 글로벌 사이버 작전 — MITRE ATT&CK 기반 분석 (2024·2025)
+</div>
+    
+            <div class="folium-map" id="map_ef25ddec4e58d501781e2d3d6bf462de" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ef25ddec4e58d501781e2d3d6bf462de = L.map(
+                "map_ef25ddec4e58d501781e2d3d6bf462de",
+                {
+                    center: [35.0, 30.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 3,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7862d2c291ce0048884c5f690f8c8059 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7862d2c291ce0048884c5f690f8c8059.addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            ant_path_92090e39a7fa20576b05a9ef7fdf81c9 = L.polyline.antPath(
+              [[31.23, 121.47], [22.31, 114.17], [38.9, -77.03]],
+              {
+  "stroke": true,
+  "color": "#e05c5c",
+  "weight": 4,
+  "opacity": 0.85,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+1,
+14,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "#e05c5c",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "white",
+}
+        ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+        var popup_b484221f34e957a04722a1968065677d = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_a7337f639efbd86aa88b2f9c25b78008 = $(`<div id="html_a7337f639efbd86aa88b2f9c25b78008" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#e05c5c;font-size:15px;font-weight:700;'>APT1</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>Unit 61398</span><br>             <div style='display:inline-block;background:#e05c5c22;color:#e05c5c;border:1px solid #e05c5c55;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>국방·방산 기밀 탈취</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing</span><br>                 <span style='color:#999;font-size:10px;'>악성 첨부파일·링크 포함 타겟 피싱 이메일 발송</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Custom Backdoor / Trojan</span><br>                 <span style='color:#999;font-size:10px;'>BANGAT·Trojan.Odinaff 등 맞춤형 백도어 배포</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Web Shells / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>웹쉘 설치 및 정상 계정 탈취로 지속 접근 유지</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploitation</span><br>                 <span style='color:#999;font-size:10px;'>CVE-2012-0158 등 취약점 악용, 권한 상승</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Obfuscated Files</span><br>                 <span style='color:#999;font-size:10px;'>악성 스크립트·바이너리 난독화로 탐지 우회</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz로 LSASS 메모리에서 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Service Scanning</span><br>                 <span style='color:#999;font-size:10px;'>네트워크 스캔으로 활성 호스트·포트 식별</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote Services</span><br>                 <span style='color:#999;font-size:10px;'>RDP·SMB로 내부 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Data from Local System</span><br>                 <span style='color:#999;font-size:10px;'>로컬 파일시스템에서 민감 문서 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2</span><br>                 <span style='color:#999;font-size:10px;'>암호화된 C2 채널(HTTPS)로 데이터 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>C2 via Web Traffic</span><br>                 <span style='color:#999;font-size:10px;'>HTTP/HTTPS 트래픽으로 C2 통신 유지</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_b484221f34e957a04722a1968065677d.setContent(html_a7337f639efbd86aa88b2f9c25b78008);
+            
+        
+
+        ant_path_92090e39a7fa20576b05a9ef7fdf81c9.bindPopup(popup_b484221f34e957a04722a1968065677d)
+        ;
+
+        
+    
+    
+            var circle_marker_e1eeb2dea61dca862dedae1ef8b4b098 = L.circleMarker(
+                [31.23, 121.47],
+                {"bubblingMouseEvents": true, "color": "#e05c5c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e05c5c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            circle_marker_e1eeb2dea61dca862dedae1ef8b4b098.bindTooltip(
+                `<div>
+                     🔴 중국 (상하이 푸동)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f3fa41dfe82aa49898ec928cf6cab48f = L.circleMarker(
+                [22.31, 114.17],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+        var popup_ea9efa6067c6706267d66d7681efe355 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_4a15692c89200002c671ab129f730b98 = $(`<div id="html_4a15692c89200002c671ab129f730b98" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#e05c5c;font-size:15px;font-weight:700;'>APT1</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>Unit 61398</span><br>             <div style='display:inline-block;background:#e05c5c22;color:#e05c5c;border:1px solid #e05c5c55;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>국방·방산 기밀 탈취</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing</span><br>                 <span style='color:#999;font-size:10px;'>악성 첨부파일·링크 포함 타겟 피싱 이메일 발송</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Custom Backdoor / Trojan</span><br>                 <span style='color:#999;font-size:10px;'>BANGAT·Trojan.Odinaff 등 맞춤형 백도어 배포</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Web Shells / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>웹쉘 설치 및 정상 계정 탈취로 지속 접근 유지</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploitation</span><br>                 <span style='color:#999;font-size:10px;'>CVE-2012-0158 등 취약점 악용, 권한 상승</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Obfuscated Files</span><br>                 <span style='color:#999;font-size:10px;'>악성 스크립트·바이너리 난독화로 탐지 우회</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz로 LSASS 메모리에서 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Service Scanning</span><br>                 <span style='color:#999;font-size:10px;'>네트워크 스캔으로 활성 호스트·포트 식별</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote Services</span><br>                 <span style='color:#999;font-size:10px;'>RDP·SMB로 내부 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Data from Local System</span><br>                 <span style='color:#999;font-size:10px;'>로컬 파일시스템에서 민감 문서 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2</span><br>                 <span style='color:#999;font-size:10px;'>암호화된 C2 채널(HTTPS)로 데이터 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>C2 via Web Traffic</span><br>                 <span style='color:#999;font-size:10px;'>HTTP/HTTPS 트래픽으로 C2 통신 유지</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_ea9efa6067c6706267d66d7681efe355.setContent(html_4a15692c89200002c671ab129f730b98);
+            
+        
+
+        circle_marker_f3fa41dfe82aa49898ec928cf6cab48f.bindPopup(popup_ea9efa6067c6706267d66d7681efe355)
+        ;
+
+        
+    
+    
+            circle_marker_f3fa41dfe82aa49898ec928cf6cab48f.bindTooltip(
+                `<div>
+                     📡 APT1 — 홍콩 (C2 서버)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_9b083041a9789c20f9b50862c7e20916 = L.marker(
+                [38.9, -77.03],
+                {
+}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            var icon_c45858d51b34195c6132c9bd1a8c0853 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_331262cbf3ed408d0d34dfa7d9db376c = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_6c115b0f89af3efeb13acec955c5ffc2 = $(`<div id="html_6c115b0f89af3efeb13acec955c5ffc2" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#e05c5c;font-size:15px;font-weight:700;'>APT1</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>Unit 61398</span><br>             <div style='display:inline-block;background:#e05c5c22;color:#e05c5c;border:1px solid #e05c5c55;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>국방·방산 기밀 탈취</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing</span><br>                 <span style='color:#999;font-size:10px;'>악성 첨부파일·링크 포함 타겟 피싱 이메일 발송</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Custom Backdoor / Trojan</span><br>                 <span style='color:#999;font-size:10px;'>BANGAT·Trojan.Odinaff 등 맞춤형 백도어 배포</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Web Shells / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>웹쉘 설치 및 정상 계정 탈취로 지속 접근 유지</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploitation</span><br>                 <span style='color:#999;font-size:10px;'>CVE-2012-0158 등 취약점 악용, 권한 상승</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Obfuscated Files</span><br>                 <span style='color:#999;font-size:10px;'>악성 스크립트·바이너리 난독화로 탐지 우회</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz로 LSASS 메모리에서 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Service Scanning</span><br>                 <span style='color:#999;font-size:10px;'>네트워크 스캔으로 활성 호스트·포트 식별</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote Services</span><br>                 <span style='color:#999;font-size:10px;'>RDP·SMB로 내부 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Data from Local System</span><br>                 <span style='color:#999;font-size:10px;'>로컬 파일시스템에서 민감 문서 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2</span><br>                 <span style='color:#999;font-size:10px;'>암호화된 C2 채널(HTTPS)로 데이터 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>C2 via Web Traffic</span><br>                 <span style='color:#999;font-size:10px;'>HTTP/HTTPS 트래픽으로 C2 통신 유지</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_331262cbf3ed408d0d34dfa7d9db376c.setContent(html_6c115b0f89af3efeb13acec955c5ffc2);
+            
+        
+
+        marker_9b083041a9789c20f9b50862c7e20916.bindPopup(popup_331262cbf3ed408d0d34dfa7d9db376c)
+        ;
+
+        
+    
+    
+            marker_9b083041a9789c20f9b50862c7e20916.bindTooltip(
+                `<div>
+                     🎯 APT1 — 미국 방산·IT·통신
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9b083041a9789c20f9b50862c7e20916.setIcon(icon_c45858d51b34195c6132c9bd1a8c0853);
+            
+    
+            ant_path_4c1e60c8971848765baaa30558fa75ec = L.polyline.antPath(
+              [[30.57, 104.07], [37.77, -122.42]],
+              {
+  "stroke": true,
+  "color": "#c0392b",
+  "weight": 4,
+  "opacity": 0.85,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+1,
+14,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "#c0392b",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "white",
+}
+        ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+        var popup_a19c365eeba5d0c130b5535a452e87e0 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_7e65883a2191e5a07cc533402c95a4c2 = $(`<div id="html_7e65883a2191e5a07cc533402c95a4c2" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#c0392b;font-size:15px;font-weight:700;'>APT3</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>UPS Team</span><br>             <div style='display:inline-block;background:#c0392b22;color:#c0392b;border:1px solid #c0392b55;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>금융·IT 지식재산 탈취</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing / Public-Facing App</span><br>                 <span style='color:#999;font-size:10px;'>악성 첨부파일 피싱 + CVE-2015-1701 공개 앱 취약점 익스플로잇</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploit Public-Facing App</span><br>                 <span style='color:#999;font-size:10px;'>웹 애플리케이션 취약점 직접 익스플로잇</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Web Shells / Registry Run Keys</span><br>                 <span style='color:#999;font-size:10px;'>웹쉘 설치 + 레지스트리 Run 키로 부팅 지속성</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploitation</span><br>                 <span style='color:#999;font-size:10px;'>권한 상승 취약점 익스플로잇</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Timestomp / Indicator Removal</span><br>                 <span style='color:#999;font-size:10px;'>파일 타임스탬프 변조 및 로그 삭제</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz 계열 도구로 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Share Discovery</span><br>                 <span style='color:#999;font-size:10px;'>접근 가능한 공유 드라이브 스캔</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Pass-the-Ticket / RDP</span><br>                 <span style='color:#999;font-size:10px;'>Pass-the-Ticket 공격 + RDP 횡적 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Input Capture</span><br>                 <span style='color:#999;font-size:10px;'>키로거로 민감 입력 데이터 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2</span><br>                 <span style='color:#999;font-size:10px;'>C2 채널로 데이터 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>C2 via Web Traffic</span><br>                 <span style='color:#999;font-size:10px;'>웹 트래픽으로 C2 서버 통신 유지</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_a19c365eeba5d0c130b5535a452e87e0.setContent(html_7e65883a2191e5a07cc533402c95a4c2);
+            
+        
+
+        ant_path_4c1e60c8971848765baaa30558fa75ec.bindPopup(popup_a19c365eeba5d0c130b5535a452e87e0)
+        ;
+
+        
+    
+    
+            var circle_marker_2b848416c2e68bea1e71727e3f2a2740 = L.circleMarker(
+                [30.57, 104.07],
+                {"bubblingMouseEvents": true, "color": "#c0392b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c0392b", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            circle_marker_2b848416c2e68bea1e71727e3f2a2740.bindTooltip(
+                `<div>
+                     🔴 중국 (청두)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a169e37ca0550aea7848c80a6e50fb7c = L.marker(
+                [37.77, -122.42],
+                {
+}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            var icon_fc5f7e8874b2e26b160345d23efdde69 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_279e499349dcf87d2097ca1c678b3ecd = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_c38c9a877a0ed3941b0db2ba616b363e = $(`<div id="html_c38c9a877a0ed3941b0db2ba616b363e" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#c0392b;font-size:15px;font-weight:700;'>APT3</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>UPS Team</span><br>             <div style='display:inline-block;background:#c0392b22;color:#c0392b;border:1px solid #c0392b55;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>금융·IT 지식재산 탈취</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing / Public-Facing App</span><br>                 <span style='color:#999;font-size:10px;'>악성 첨부파일 피싱 + CVE-2015-1701 공개 앱 취약점 익스플로잇</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploit Public-Facing App</span><br>                 <span style='color:#999;font-size:10px;'>웹 애플리케이션 취약점 직접 익스플로잇</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Web Shells / Registry Run Keys</span><br>                 <span style='color:#999;font-size:10px;'>웹쉘 설치 + 레지스트리 Run 키로 부팅 지속성</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploitation</span><br>                 <span style='color:#999;font-size:10px;'>권한 상승 취약점 익스플로잇</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Timestomp / Indicator Removal</span><br>                 <span style='color:#999;font-size:10px;'>파일 타임스탬프 변조 및 로그 삭제</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz 계열 도구로 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Share Discovery</span><br>                 <span style='color:#999;font-size:10px;'>접근 가능한 공유 드라이브 스캔</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Pass-the-Ticket / RDP</span><br>                 <span style='color:#999;font-size:10px;'>Pass-the-Ticket 공격 + RDP 횡적 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Input Capture</span><br>                 <span style='color:#999;font-size:10px;'>키로거로 민감 입력 데이터 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2</span><br>                 <span style='color:#999;font-size:10px;'>C2 채널로 데이터 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>C2 via Web Traffic</span><br>                 <span style='color:#999;font-size:10px;'>웹 트래픽으로 C2 서버 통신 유지</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_279e499349dcf87d2097ca1c678b3ecd.setContent(html_c38c9a877a0ed3941b0db2ba616b363e);
+            
+        
+
+        marker_a169e37ca0550aea7848c80a6e50fb7c.bindPopup(popup_279e499349dcf87d2097ca1c678b3ecd)
+        ;
+
+        
+    
+    
+            marker_a169e37ca0550aea7848c80a6e50fb7c.bindTooltip(
+                `<div>
+                     🎯 APT3 — Anthem / Adobe / Equifax
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a169e37ca0550aea7848c80a6e50fb7c.setIcon(icon_fc5f7e8874b2e26b160345d23efdde69);
+            
+    
+            ant_path_ba026f3471a671fe9ac70ef1840bfab4 = L.polyline.antPath(
+              [[39.9, 116.4], [1.35, 103.82], [35.68, 139.69]],
+              {
+  "stroke": true,
+  "color": "#e67e22",
+  "weight": 4,
+  "opacity": 0.85,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+1,
+14,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "#e67e22",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "white",
+}
+        ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+        var popup_34f9673886c50d7152853b034dcb7f60 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_ede31ddfcf3aab73901dcaa238ed92d9 = $(`<div id="html_ede31ddfcf3aab73901dcaa238ed92d9" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#e67e22;font-size:15px;font-weight:700;'>APT10</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>Menupass / Stone Panda</span><br>             <div style='display:inline-block;background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>MSP 통해 클라우드 대량 탈취 (Cloud Hopper)</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>탈취한 정상 계정 활용 + 맞춤형 피싱 이메일</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Scripting</span><br>                 <span style='color:#999;font-size:10px;'>스크립트로 페이로드 실행</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Service Registry / DLL Hijacking</span><br>                 <span style='color:#999;font-size:10px;'>레지스트리 서비스 키 + DLL 검색 순서 하이재킹</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>탈취 계정으로 권한 상승</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Masquerading / Obfuscated Files</span><br>                 <span style='color:#999;font-size:10px;'>정상 바이너리로 위장 + 악성 스크립트 난독화</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz로 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote System / Network Share</span><br>                 <span style='color:#999;font-size:10px;'>원격 시스템 및 네트워크 공유 탐색</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>RDP / SMB / Windows Admin Shares</span><br>                 <span style='color:#999;font-size:10px;'>RDP·SMB·관리자 공유로 내부 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Shared Drive / Keylogger</span><br>                 <span style='color:#999;font-size:10px;'>공유 드라이브 데이터 + 키로거 입력 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration via FTP/SCP</span><br>                 <span style='color:#999;font-size:10px;'>FTP·SCP 등 대체 프로토콜로 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Custom C2 Protocol</span><br>                 <span style='color:#999;font-size:10px;'>표준·맞춤형 애플리케이션 레이어 프로토콜</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_34f9673886c50d7152853b034dcb7f60.setContent(html_ede31ddfcf3aab73901dcaa238ed92d9);
+            
+        
+
+        ant_path_ba026f3471a671fe9ac70ef1840bfab4.bindPopup(popup_34f9673886c50d7152853b034dcb7f60)
+        ;
+
+        
+    
+    
+            var circle_marker_50f5df867a740c153c93f27519ff739b = L.circleMarker(
+                [39.9, 116.4],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            circle_marker_50f5df867a740c153c93f27519ff739b.bindTooltip(
+                `<div>
+                     🔴 중국 (베이징)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_72fd91139dedbf686cc9d5c0e59255ed = L.circleMarker(
+                [1.35, 103.82],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+        var popup_bc30ed64316647a325e758358707bde2 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_328c74b5b081353358270ab8d1711de2 = $(`<div id="html_328c74b5b081353358270ab8d1711de2" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#e67e22;font-size:15px;font-weight:700;'>APT10</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>Menupass / Stone Panda</span><br>             <div style='display:inline-block;background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>MSP 통해 클라우드 대량 탈취 (Cloud Hopper)</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>탈취한 정상 계정 활용 + 맞춤형 피싱 이메일</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Scripting</span><br>                 <span style='color:#999;font-size:10px;'>스크립트로 페이로드 실행</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Service Registry / DLL Hijacking</span><br>                 <span style='color:#999;font-size:10px;'>레지스트리 서비스 키 + DLL 검색 순서 하이재킹</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>탈취 계정으로 권한 상승</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Masquerading / Obfuscated Files</span><br>                 <span style='color:#999;font-size:10px;'>정상 바이너리로 위장 + 악성 스크립트 난독화</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz로 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote System / Network Share</span><br>                 <span style='color:#999;font-size:10px;'>원격 시스템 및 네트워크 공유 탐색</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>RDP / SMB / Windows Admin Shares</span><br>                 <span style='color:#999;font-size:10px;'>RDP·SMB·관리자 공유로 내부 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Shared Drive / Keylogger</span><br>                 <span style='color:#999;font-size:10px;'>공유 드라이브 데이터 + 키로거 입력 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration via FTP/SCP</span><br>                 <span style='color:#999;font-size:10px;'>FTP·SCP 등 대체 프로토콜로 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Custom C2 Protocol</span><br>                 <span style='color:#999;font-size:10px;'>표준·맞춤형 애플리케이션 레이어 프로토콜</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_bc30ed64316647a325e758358707bde2.setContent(html_328c74b5b081353358270ab8d1711de2);
+            
+        
+
+        circle_marker_72fd91139dedbf686cc9d5c0e59255ed.bindPopup(popup_bc30ed64316647a325e758358707bde2)
+        ;
+
+        
+    
+    
+            circle_marker_72fd91139dedbf686cc9d5c0e59255ed.bindTooltip(
+                `<div>
+                     📡 APT10 — 싱가포르 (C2 서버)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_9804e02d44b67e1f9f21b961cdbf7098 = L.marker(
+                [35.68, 139.69],
+                {
+}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            var icon_61e4476fff1c59be009bbffeb2ffedf0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_830c23bba8df0e106147124d54016a32 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_4de8da39148d58cf4447130d1c698707 = $(`<div id="html_4de8da39148d58cf4447130d1c698707" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#e67e22;font-size:15px;font-weight:700;'>APT10</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>Menupass / Stone Panda</span><br>             <div style='display:inline-block;background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>MSP 통해 클라우드 대량 탈취 (Cloud Hopper)</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>탈취한 정상 계정 활용 + 맞춤형 피싱 이메일</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Scripting</span><br>                 <span style='color:#999;font-size:10px;'>스크립트로 페이로드 실행</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Service Registry / DLL Hijacking</span><br>                 <span style='color:#999;font-size:10px;'>레지스트리 서비스 키 + DLL 검색 순서 하이재킹</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>탈취 계정으로 권한 상승</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Masquerading / Obfuscated Files</span><br>                 <span style='color:#999;font-size:10px;'>정상 바이너리로 위장 + 악성 스크립트 난독화</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz로 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote System / Network Share</span><br>                 <span style='color:#999;font-size:10px;'>원격 시스템 및 네트워크 공유 탐색</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>RDP / SMB / Windows Admin Shares</span><br>                 <span style='color:#999;font-size:10px;'>RDP·SMB·관리자 공유로 내부 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Shared Drive / Keylogger</span><br>                 <span style='color:#999;font-size:10px;'>공유 드라이브 데이터 + 키로거 입력 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration via FTP/SCP</span><br>                 <span style='color:#999;font-size:10px;'>FTP·SCP 등 대체 프로토콜로 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Custom C2 Protocol</span><br>                 <span style='color:#999;font-size:10px;'>표준·맞춤형 애플리케이션 레이어 프로토콜</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_830c23bba8df0e106147124d54016a32.setContent(html_4de8da39148d58cf4447130d1c698707);
+            
+        
+
+        marker_9804e02d44b67e1f9f21b961cdbf7098.bindPopup(popup_830c23bba8df0e106147124d54016a32)
+        ;
+
+        
+    
+    
+            marker_9804e02d44b67e1f9f21b961cdbf7098.bindTooltip(
+                `<div>
+                     🎯 APT10 — Fujitsu / NTT Data / NEC
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9804e02d44b67e1f9f21b961cdbf7098.setIcon(icon_61e4476fff1c59be009bbffeb2ffedf0);
+            
+    
+            ant_path_15356d0402f0b31b07394ed523b36439 = L.polyline.antPath(
+              [[39.9, 116.4], [52.52, 13.4]],
+              {
+  "stroke": true,
+  "color": "#8e44ad",
+  "weight": 4,
+  "opacity": 0.85,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+1,
+14,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "#8e44ad",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "white",
+}
+        ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+        var popup_b76bd59d43cd1ba584630da88c6a258c = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_7d4d76c09ef9a144096919999cd8b4d4 = $(`<div id="html_7d4d76c09ef9a144096919999cd8b4d4" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#8e44ad;font-size:15px;font-weight:700;'>APT27</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>Emissary Panda</span><br>             <div style='display:inline-block;background:#8e44ad22;color:#8e44ad;border:1px solid #8e44ad55;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>지재권 절도 (국방·항공우주 집중)</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing Attachment</span><br>                 <span style='color:#999;font-size:10px;'>매크로 포함 Word 문서 등 악성 첨부파일 피싱</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>PowerShell / CLI</span><br>                 <span style='color:#999;font-size:10px;'>PowerShell·명령줄로 악성 페이로드 실행</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Web Shell</span><br>                 <span style='color:#999;font-size:10px;'>침해된 웹 서버에 웹쉘 배포</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Valid Accounts / Exploitation</span><br>                 <span style='color:#999;font-size:10px;'>탈취 계정 + 취약점 악용으로 권한 상승</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Obfuscated Files / Masquerading</span><br>                 <span style='color:#999;font-size:10px;'>악성 바이너리 정상 파일로 위장 + 난독화</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Brute Force / Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>브루트포스 + Mimikatz 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Service Scanning</span><br>                 <span style='color:#999;font-size:10px;'>활성 네트워크 서비스 스캔</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote File Copy</span><br>                 <span style='color:#999;font-size:10px;'>원격 파일 복사로 내부 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Data from Information Repositories</span><br>                 <span style='color:#999;font-size:10px;'>정보 저장소에서 데이터 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2</span><br>                 <span style='color:#999;font-size:10px;'>암호화된 C2 채널로 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Custom C2 Protocol</span><br>                 <span style='color:#999;font-size:10px;'>커스텀 프로토콜로 C2 통신</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_b76bd59d43cd1ba584630da88c6a258c.setContent(html_7d4d76c09ef9a144096919999cd8b4d4);
+            
+        
+
+        ant_path_15356d0402f0b31b07394ed523b36439.bindPopup(popup_b76bd59d43cd1ba584630da88c6a258c)
+        ;
+
+        
+    
+    
+            var marker_5c6a330f971f31d7364bc2fd4e73d7af = L.marker(
+                [52.52, 13.4],
+                {
+}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            var icon_c23280816c4dc3a3fb15f238fa177112 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_16c39a4c8d4ec4c9013bb11627d3ee83 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_94439fd5e8704a4a394e5a5576e448f3 = $(`<div id="html_94439fd5e8704a4a394e5a5576e448f3" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#8e44ad;font-size:15px;font-weight:700;'>APT27</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>Emissary Panda</span><br>             <div style='display:inline-block;background:#8e44ad22;color:#8e44ad;border:1px solid #8e44ad55;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>지재권 절도 (국방·항공우주 집중)</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing Attachment</span><br>                 <span style='color:#999;font-size:10px;'>매크로 포함 Word 문서 등 악성 첨부파일 피싱</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>PowerShell / CLI</span><br>                 <span style='color:#999;font-size:10px;'>PowerShell·명령줄로 악성 페이로드 실행</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Web Shell</span><br>                 <span style='color:#999;font-size:10px;'>침해된 웹 서버에 웹쉘 배포</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Valid Accounts / Exploitation</span><br>                 <span style='color:#999;font-size:10px;'>탈취 계정 + 취약점 악용으로 권한 상승</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Obfuscated Files / Masquerading</span><br>                 <span style='color:#999;font-size:10px;'>악성 바이너리 정상 파일로 위장 + 난독화</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Brute Force / Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>브루트포스 + Mimikatz 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Service Scanning</span><br>                 <span style='color:#999;font-size:10px;'>활성 네트워크 서비스 스캔</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote File Copy</span><br>                 <span style='color:#999;font-size:10px;'>원격 파일 복사로 내부 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Data from Information Repositories</span><br>                 <span style='color:#999;font-size:10px;'>정보 저장소에서 데이터 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2</span><br>                 <span style='color:#999;font-size:10px;'>암호화된 C2 채널로 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Custom C2 Protocol</span><br>                 <span style='color:#999;font-size:10px;'>커스텀 프로토콜로 C2 통신</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_16c39a4c8d4ec4c9013bb11627d3ee83.setContent(html_94439fd5e8704a4a394e5a5576e448f3);
+            
+        
+
+        marker_5c6a330f971f31d7364bc2fd4e73d7af.bindPopup(popup_16c39a4c8d4ec4c9013bb11627d3ee83)
+        ;
+
+        
+    
+    
+            marker_5c6a330f971f31d7364bc2fd4e73d7af.bindTooltip(
+                `<div>
+                     🎯 APT27 — 독일 연방 외무부 / 에너지 기업
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5c6a330f971f31d7364bc2fd4e73d7af.setIcon(icon_c23280816c4dc3a3fb15f238fa177112);
+            
+    
+            ant_path_43bbdad3e634558ffd37bac7042a20a5 = L.polyline.antPath(
+              [[22.54, 114.06], [3.14, 101.69]],
+              {
+  "stroke": true,
+  "color": "#27ae60",
+  "weight": 4,
+  "opacity": 0.85,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+1,
+14,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "#27ae60",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "white",
+}
+        ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+        var popup_f79650c6485d93ccdc016f810d8c3e63 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_f966e94c150e43399332bfea8fbba6be = $(`<div id="html_f966e94c150e43399332bfea8fbba6be" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#27ae60;font-size:15px;font-weight:700;'>APT30</span>             &nbsp;             <div style='display:inline-block;background:#27ae6022;color:#27ae60;border:1px solid #27ae6055;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>동남아 정부 대상 지정학적 정보 수집</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing Link</span><br>                 <span style='color:#999;font-size:10px;'>악성 링크 포함 스피어 피싱 메일</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Command-Line Interface</span><br>                 <span style='color:#999;font-size:10px;'>CLI로 명령 실행</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Scheduled Task / Registry Run Keys</span><br>                 <span style='color:#999;font-size:10px;'>예약 작업 생성 + 레지스트리 키 설정</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Valid Accounts / Exploitation</span><br>                 <span style='color:#999;font-size:10px;'>유효 계정 + 취약점 악용</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Hidden Files / Obfuscated Files</span><br>                 <span style='color:#999;font-size:10px;'>숨김 파일·디렉토리 + 정보 난독화</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz 계열로 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>System Info / Network Scanning</span><br>                 <span style='color:#999;font-size:10px;'>시스템 정보 수집 + 네트워크 서비스 스캔</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Windows Admin Shares / RDP</span><br>                 <span style='color:#999;font-size:10px;'>관리자 공유 + RDP로 내부 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Data Staged</span><br>                 <span style='color:#999;font-size:10px;'>수집 데이터 스테이징</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Physical Medium / C2 Channel</span><br>                 <span style='color:#999;font-size:10px;'>USB 등 물리 매체 + C2 채널 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Standard Application Layer</span><br>                 <span style='color:#999;font-size:10px;'>표준 애플리케이션 레이어 프로토콜 C2</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_f79650c6485d93ccdc016f810d8c3e63.setContent(html_f966e94c150e43399332bfea8fbba6be);
+            
+        
+
+        ant_path_43bbdad3e634558ffd37bac7042a20a5.bindPopup(popup_f79650c6485d93ccdc016f810d8c3e63)
+        ;
+
+        
+    
+    
+            var circle_marker_c42d0fc43d8aabe99a3c26dd78597c4c = L.circleMarker(
+                [22.54, 114.06],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            circle_marker_c42d0fc43d8aabe99a3c26dd78597c4c.bindTooltip(
+                `<div>
+                     🔴 중국 (선전)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0f4ae6d6c1fe6b098ed90f3726d64874 = L.marker(
+                [3.14, 101.69],
+                {
+}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            var icon_dfbaf3b7d8e68e5c307ee84fcbc6f2f7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_33b8b97dcd63d1f460698ebbd4aec3d3 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_ba55ed5bb96830115ed13e361c27a1ff = $(`<div id="html_ba55ed5bb96830115ed13e361c27a1ff" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#27ae60;font-size:15px;font-weight:700;'>APT30</span>             &nbsp;             <div style='display:inline-block;background:#27ae6022;color:#27ae60;border:1px solid #27ae6055;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>동남아 정부 대상 지정학적 정보 수집</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing Link</span><br>                 <span style='color:#999;font-size:10px;'>악성 링크 포함 스피어 피싱 메일</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Command-Line Interface</span><br>                 <span style='color:#999;font-size:10px;'>CLI로 명령 실행</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Scheduled Task / Registry Run Keys</span><br>                 <span style='color:#999;font-size:10px;'>예약 작업 생성 + 레지스트리 키 설정</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Valid Accounts / Exploitation</span><br>                 <span style='color:#999;font-size:10px;'>유효 계정 + 취약점 악용</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Hidden Files / Obfuscated Files</span><br>                 <span style='color:#999;font-size:10px;'>숨김 파일·디렉토리 + 정보 난독화</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz 계열로 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>System Info / Network Scanning</span><br>                 <span style='color:#999;font-size:10px;'>시스템 정보 수집 + 네트워크 서비스 스캔</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Windows Admin Shares / RDP</span><br>                 <span style='color:#999;font-size:10px;'>관리자 공유 + RDP로 내부 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Data Staged</span><br>                 <span style='color:#999;font-size:10px;'>수집 데이터 스테이징</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Physical Medium / C2 Channel</span><br>                 <span style='color:#999;font-size:10px;'>USB 등 물리 매체 + C2 채널 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Standard Application Layer</span><br>                 <span style='color:#999;font-size:10px;'>표준 애플리케이션 레이어 프로토콜 C2</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_33b8b97dcd63d1f460698ebbd4aec3d3.setContent(html_ba55ed5bb96830115ed13e361c27a1ff);
+            
+        
+
+        marker_0f4ae6d6c1fe6b098ed90f3726d64874.bindPopup(popup_33b8b97dcd63d1f460698ebbd4aec3d3)
+        ;
+
+        
+    
+    
+            marker_0f4ae6d6c1fe6b098ed90f3726d64874.bindTooltip(
+                `<div>
+                     🎯 APT30 — 인도네시아·말레이시아 정부기관
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0f4ae6d6c1fe6b098ed90f3726d64874.setIcon(icon_dfbaf3b7d8e68e5c307ee84fcbc6f2f7);
+            
+    
+            ant_path_634448809201f65f4f3add9d0b1e0f84 = L.polyline.antPath(
+              [[24.48, 118.08], [51.5, -0.12]],
+              {
+  "stroke": true,
+  "color": "#2980b9",
+  "weight": 4,
+  "opacity": 0.85,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+1,
+14,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "#2980b9",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "white",
+}
+        ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+        var popup_ef36cf8705d6eec208ab299e30af1192 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_fe7f49736c548edc39f34bb31c1edb7f = $(`<div id="html_fe7f49736c548edc39f34bb31c1edb7f" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#2980b9;font-size:15px;font-weight:700;'>APT40</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>TEMP.Periscope / Leviathan</span><br>             <div style='display:inline-block;background:#2980b922;color:#2980b9;border:1px solid #2980b955;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>일대일로 관련 해양·에너지 인프라 정보 탈취</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>악성 링크 피싱 + 정상 계정 활용</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Scripting / Public-Facing App Exploit</span><br>                 <span style='color:#999;font-size:10px;'>스크립트 실행 + 웹앱 취약점 익스플로잇</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Web Shell / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>웹쉘 + 정상 계정으로 지속 접근</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploitation / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>취약점 익스플로잇 + 탈취 계정</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Obfuscated Files / Timestomp</span><br>                 <span style='color:#999;font-size:10px;'>파일 난독화 + 타임스탬프 수정</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping / Brute Force</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz 덤프 + 브루트포스</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote System / Network Share</span><br>                 <span style='color:#999;font-size:10px;'>원격 시스템 및 네트워크 공유 탐색</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>RDP / Pass-the-Ticket</span><br>                 <span style='color:#999;font-size:10px;'>RDP + Pass-the-Ticket 횡적 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Shared Drive / Keylogger</span><br>                 <span style='color:#999;font-size:10px;'>공유 드라이브 + 키로거 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2 / Alt Protocol</span><br>                 <span style='color:#999;font-size:10px;'>C2 채널 + FTP 등 대체 프로토콜</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Custom C2 / Common Ports</span><br>                 <span style='color:#999;font-size:10px;'>커스텀 프로토콜 + 일반 포트 활용</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_ef36cf8705d6eec208ab299e30af1192.setContent(html_fe7f49736c548edc39f34bb31c1edb7f);
+            
+        
+
+        ant_path_634448809201f65f4f3add9d0b1e0f84.bindPopup(popup_ef36cf8705d6eec208ab299e30af1192)
+        ;
+
+        
+    
+    
+            var circle_marker_0f80c75d71e8fa02b66d8f11500c8b5b = L.circleMarker(
+                [24.48, 118.08],
+                {"bubblingMouseEvents": true, "color": "#2980b9", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980b9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            circle_marker_0f80c75d71e8fa02b66d8f11500c8b5b.bindTooltip(
+                `<div>
+                     🔴 중국 (샤먼)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_653445c144ab59f38039824788e02286 = L.marker(
+                [51.5, -0.12],
+                {
+}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            var icon_01ad4cb580bb3d9f72d05beefa0b4590 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f89bfe2cfcd7fe0843f98238555c5e47 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_212055e474d1ff4b0e3d820fa4ddba5b = $(`<div id="html_212055e474d1ff4b0e3d820fa4ddba5b" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#2980b9;font-size:15px;font-weight:700;'>APT40</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>TEMP.Periscope / Leviathan</span><br>             <div style='display:inline-block;background:#2980b922;color:#2980b9;border:1px solid #2980b955;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>일대일로 관련 해양·에너지 인프라 정보 탈취</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Spear Phishing / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>악성 링크 피싱 + 정상 계정 활용</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Scripting / Public-Facing App Exploit</span><br>                 <span style='color:#999;font-size:10px;'>스크립트 실행 + 웹앱 취약점 익스플로잇</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Web Shell / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>웹쉘 + 정상 계정으로 지속 접근</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploitation / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>취약점 익스플로잇 + 탈취 계정</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Obfuscated Files / Timestomp</span><br>                 <span style='color:#999;font-size:10px;'>파일 난독화 + 타임스탬프 수정</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping / Brute Force</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz 덤프 + 브루트포스</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote System / Network Share</span><br>                 <span style='color:#999;font-size:10px;'>원격 시스템 및 네트워크 공유 탐색</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>RDP / Pass-the-Ticket</span><br>                 <span style='color:#999;font-size:10px;'>RDP + Pass-the-Ticket 횡적 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Shared Drive / Keylogger</span><br>                 <span style='color:#999;font-size:10px;'>공유 드라이브 + 키로거 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2 / Alt Protocol</span><br>                 <span style='color:#999;font-size:10px;'>C2 채널 + FTP 등 대체 프로토콜</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Custom C2 / Common Ports</span><br>                 <span style='color:#999;font-size:10px;'>커스텀 프로토콜 + 일반 포트 활용</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_f89bfe2cfcd7fe0843f98238555c5e47.setContent(html_212055e474d1ff4b0e3d820fa4ddba5b);
+            
+        
+
+        marker_653445c144ab59f38039824788e02286.bindPopup(popup_f89bfe2cfcd7fe0843f98238555c5e47)
+        ;
+
+        
+    
+    
+            marker_653445c144ab59f38039824788e02286.bindTooltip(
+                `<div>
+                     🎯 APT40 — 해양 연구기관 / 방산 업체
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_653445c144ab59f38039824788e02286.setIcon(icon_01ad4cb580bb3d9f72d05beefa0b4590);
+            
+    
+            ant_path_3bd8bca8224a4a11e56bd181cd46a1ad = L.polyline.antPath(
+              [[39.9, 116.4], [22.31, 114.17], [37.47, 127.02]],
+              {
+  "stroke": true,
+  "color": "#e05c5c",
+  "weight": 5,
+  "opacity": 0.85,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+1,
+14,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "#e05c5c",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "white",
+}
+        ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+        var popup_35253e610a64e0c5e3ace3623d510df8 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_c7c32c5ff4181ee8a0d371c7cb26c698 = $(`<div id="html_c7c32c5ff4181ee8a0d371c7cb26c698" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#e05c5c;font-size:15px;font-weight:700;'>APT41</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>Double Dragon / Barium / Wicked Panda</span><br>             <div style='display:inline-block;background:#e05c5c22;color:#e05c5c;border:1px solid #e05c5c55;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>BPFDoor → 가입자 데이터 탈취 (스파이+금전 동시 추구)</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Initial Access Unknown</span><br>                 <span style='color:#999;font-size:10px;'>서버 A 최초 침해 경로는 공개자료상 미확정. 가능 기법: T1190/T1078(중간 이하 신뢰도)</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Scripting / Public-Facing App</span><br>                 <span style='color:#999;font-size:10px;'>스크립트 + 공개 앱 취약점 익스플로잇</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Scheduled Task / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>예약 작업 생성 + 정상 계정으로 지속성 확보</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Valid Accounts / Exploitation</span><br>                 <span style='color:#999;font-size:10px;'>탈취 계정 + 취약점으로 권한 상승</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Timestomp / Obfuscated Files</span><br>                 <span style='color:#999;font-size:10px;'>BPFDoor 커널 레벨 은닉 + 타임스탬프 변조</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz로 메모리 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Scanning / System Info</span><br>                 <span style='color:#999;font-size:10px;'>네트워크 서비스 스캔 + 시스템 정보 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>RDP / SMB / Admin Shares</span><br>                 <span style='color:#999;font-size:10px;'>RDP·SMB·관리자 공유로 내부 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>DB / Info Repositories / Keylogger</span><br>                 <span style='color:#999;font-size:10px;'>IMSI·IMEI 등 가입자 DB + 키로거 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2</span><br>                 <span style='color:#999;font-size:10px;'>암호화 C2 채널 + 대체 프로토콜로 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Custom C2 / HTTP·HTTPS</span><br>                 <span style='color:#999;font-size:10px;'>매직 패킷 활성화 BPFDoor C2 통신</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_35253e610a64e0c5e3ace3623d510df8.setContent(html_c7c32c5ff4181ee8a0d371c7cb26c698);
+            
+        
+
+        ant_path_3bd8bca8224a4a11e56bd181cd46a1ad.bindPopup(popup_35253e610a64e0c5e3ace3623d510df8)
+        ;
+
+        
+    
+    
+            var marker_d5ddf7e023fc43e062ad06b523acac74 = L.marker(
+                [37.47, 127.02],
+                {
+}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            var icon_519dcd4b523b680254307594cb6bde81 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7a11c201a48937d25b48b0650d08fde9 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_dd7262858fa2704b38a8b1b3e35c8963 = $(`<div id="html_dd7262858fa2704b38a8b1b3e35c8963" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#e05c5c;font-size:15px;font-weight:700;'>APT41</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>Double Dragon / Barium / Wicked Panda</span><br>             <div style='display:inline-block;background:#e05c5c22;color:#e05c5c;border:1px solid #e05c5c55;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>BPFDoor → 가입자 데이터 탈취 (스파이+금전 동시 추구)</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Initial Access Unknown</span><br>                 <span style='color:#999;font-size:10px;'>서버 A 최초 침해 경로는 공개자료상 미확정. 가능 기법: T1190/T1078(중간 이하 신뢰도)</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Scripting / Public-Facing App</span><br>                 <span style='color:#999;font-size:10px;'>스크립트 + 공개 앱 취약점 익스플로잇</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Scheduled Task / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>예약 작업 생성 + 정상 계정으로 지속성 확보</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Valid Accounts / Exploitation</span><br>                 <span style='color:#999;font-size:10px;'>탈취 계정 + 취약점으로 권한 상승</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Timestomp / Obfuscated Files</span><br>                 <span style='color:#999;font-size:10px;'>BPFDoor 커널 레벨 은닉 + 타임스탬프 변조</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>Mimikatz로 메모리 자격증명 덤프</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Scanning / System Info</span><br>                 <span style='color:#999;font-size:10px;'>네트워크 서비스 스캔 + 시스템 정보 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>RDP / SMB / Admin Shares</span><br>                 <span style='color:#999;font-size:10px;'>RDP·SMB·관리자 공유로 내부 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>DB / Info Repositories / Keylogger</span><br>                 <span style='color:#999;font-size:10px;'>IMSI·IMEI 등 가입자 DB + 키로거 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2</span><br>                 <span style='color:#999;font-size:10px;'>암호화 C2 채널 + 대체 프로토콜로 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Custom C2 / HTTP·HTTPS</span><br>                 <span style='color:#999;font-size:10px;'>매직 패킷 활성화 BPFDoor C2 통신</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_7a11c201a48937d25b48b0650d08fde9.setContent(html_dd7262858fa2704b38a8b1b3e35c8963);
+            
+        
+
+        marker_d5ddf7e023fc43e062ad06b523acac74.bindPopup(popup_7a11c201a48937d25b48b0650d08fde9)
+        ;
+
+        
+    
+    
+            marker_d5ddf7e023fc43e062ad06b523acac74.bindTooltip(
+                `<div>
+                     🎯 APT41 — SKT 본사 (HSS 서버)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d5ddf7e023fc43e062ad06b523acac74.setIcon(icon_519dcd4b523b680254307594cb6bde81);
+            
+    
+            ant_path_96a42e37c5fed9fd0412d023ceee4562 = L.polyline.antPath(
+              [[39.9, 116.4], [38.9, -77.03]],
+              {
+  "stroke": true,
+  "color": "#1abc9c",
+  "weight": 5,
+  "opacity": 0.85,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+1,
+14,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "#1abc9c",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "white",
+}
+        ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+        var popup_560945394538f6ee62755f153d39ca9d = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_8ee3c64799f17b7d2b1eeea8d922d3d9 = $(`<div id="html_8ee3c64799f17b7d2b1eeea8d922d3d9" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#1abc9c;font-size:15px;font-weight:700;'>Salt Typhoon</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>GhostEmperor</span><br>             <div style='display:inline-block;background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>합법적 백도어(CALEA) 악용 → 정부 관계자 도청</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Initial Access Unknown</span><br>                 <span style='color:#999;font-size:10px;'>최초 침투 방식은 공개자료상 미확정. 이후 유효 계정·평문 계정정보 악용은 확인됨</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploit Public-Facing App</span><br>                 <span style='color:#999;font-size:10px;'>통신 인프라 공개 앱 취약점 익스플로잇</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Web Shell / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>1년 이상 장기 잠복 — 웹쉘 + 계정 지속 유지</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploitation</span><br>                 <span style='color:#999;font-size:10px;'>인프라 관리자 권한 획득</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Indicator Removal / Masquerading</span><br>                 <span style='color:#999;font-size:10px;'>합법적 CALEA 트래픽으로 위장, 로그 삭제</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>통신사 내부 자격증명 탈취</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Service Scanning</span><br>                 <span style='color:#999;font-size:10px;'>감청 대상 식별을 위한 네트워크 탐색</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote Services</span><br>                 <span style='color:#999;font-size:10px;'>통신사 내부 시스템 간 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Audio Capture / Network Sniffing</span><br>                 <span style='color:#999;font-size:10px;'>대선 관련 인물·정부 관계자 통화 실시간 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2</span><br>                 <span style='color:#999;font-size:10px;'>수집된 통화·메타데이터 C2 채널 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>C2 via Web Traffic</span><br>                 <span style='color:#999;font-size:10px;'>HTTPS 기반 C2 — 정상 트래픽과 혼재</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_560945394538f6ee62755f153d39ca9d.setContent(html_8ee3c64799f17b7d2b1eeea8d922d3d9);
+            
+        
+
+        ant_path_96a42e37c5fed9fd0412d023ceee4562.bindPopup(popup_560945394538f6ee62755f153d39ca9d)
+        ;
+
+        
+    
+    
+            var marker_8c78f04d1c985f1a603fa18817d07d31 = L.marker(
+                [38.9, -77.03],
+                {
+}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            var icon_003899869578dbc4156fc3f7391b5f1c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1a34e3187477f752d56e3e5faab564e6 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_82e034a5eb57fd4da679fba0a7f19730 = $(`<div id="html_82e034a5eb57fd4da679fba0a7f19730" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#1abc9c;font-size:15px;font-weight:700;'>Salt Typhoon</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>GhostEmperor</span><br>             <div style='display:inline-block;background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>합법적 백도어(CALEA) 악용 → 정부 관계자 도청</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Initial Access Unknown</span><br>                 <span style='color:#999;font-size:10px;'>최초 침투 방식은 공개자료상 미확정. 이후 유효 계정·평문 계정정보 악용은 확인됨</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploit Public-Facing App</span><br>                 <span style='color:#999;font-size:10px;'>통신 인프라 공개 앱 취약점 익스플로잇</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Web Shell / Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>1년 이상 장기 잠복 — 웹쉘 + 계정 지속 유지</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploitation</span><br>                 <span style='color:#999;font-size:10px;'>인프라 관리자 권한 획득</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Indicator Removal / Masquerading</span><br>                 <span style='color:#999;font-size:10px;'>합법적 CALEA 트래픽으로 위장, 로그 삭제</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>통신사 내부 자격증명 탈취</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Service Scanning</span><br>                 <span style='color:#999;font-size:10px;'>감청 대상 식별을 위한 네트워크 탐색</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote Services</span><br>                 <span style='color:#999;font-size:10px;'>통신사 내부 시스템 간 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Audio Capture / Network Sniffing</span><br>                 <span style='color:#999;font-size:10px;'>대선 관련 인물·정부 관계자 통화 실시간 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2</span><br>                 <span style='color:#999;font-size:10px;'>수집된 통화·메타데이터 C2 채널 유출</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>C2 via Web Traffic</span><br>                 <span style='color:#999;font-size:10px;'>HTTPS 기반 C2 — 정상 트래픽과 혼재</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_1a34e3187477f752d56e3e5faab564e6.setContent(html_82e034a5eb57fd4da679fba0a7f19730);
+            
+        
+
+        marker_8c78f04d1c985f1a603fa18817d07d31.bindPopup(popup_1a34e3187477f752d56e3e5faab564e6)
+        ;
+
+        
+    
+    
+            marker_8c78f04d1c985f1a603fa18817d07d31.bindTooltip(
+                `<div>
+                     🎯 Salt Typhoon — 미국 통신사 9곳
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8c78f04d1c985f1a603fa18817d07d31.setIcon(icon_003899869578dbc4156fc3f7391b5f1c);
+            
+    
+            ant_path_020eda9d403794e9c9933c511eb85197 = L.polyline.antPath(
+              [[31.23, 121.47], [39.5, -98.35]],
+              {
+  "stroke": true,
+  "color": "#f5a623",
+  "weight": 5,
+  "opacity": 0.85,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+1,
+14,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "#f5a623",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "white",
+}
+        ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+        var popup_4d33c1a5d4ba85277f7dd5c0930fec09 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_f83d0145312ebd04cf07523725abf99b = $(`<div id="html_f83d0145312ebd04cf07523725abf99b" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#f5a623;font-size:15px;font-weight:700;'>Volt Typhoon</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>Bronze Silhouette</span><br>             <div style='display:inline-block;background:#f5a62322;color:#f5a623;border:1px solid #f5a62355;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>핵심 인프라 장기 디지털 매복 (유사시 마비 목적)</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploit Public-Facing App</span><br>                 <span style='color:#999;font-size:10px;'>소규모 라우터·VPN 장비 취약점으로 초기 침투</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Command-Line Interface</span><br>                 <span style='color:#999;font-size:10px;'>LOLBins(정상 OS 도구) 활용으로 흔적 최소화</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Valid Accounts / Scheduled Task</span><br>                 <span style='color:#999;font-size:10px;'>정상 계정 탈취 + 예약 작업으로 장기 잠복</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>탈취한 관리자 계정으로 권한 확보</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Living-off-the-Land (LOLBins)</span><br>                 <span style='color:#999;font-size:10px;'>보안 솔루션 우회 — 정상 도구만 사용</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>시스템 자격증명 탈취</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Service Scanning</span><br>                 <span style='color:#999;font-size:10px;'>OT/ICS 시스템 구조 파악</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote Services</span><br>                 <span style='color:#999;font-size:10px;'>내부 OT 네트워크로 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Data from Local System</span><br>                 <span style='color:#999;font-size:10px;'>인프라 제어 시스템 설계 정보 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2</span><br>                 <span style='color:#999;font-size:10px;'>유사시 마비 명령 대기 — 즉각 유출보다 잠복 우선</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Proxy / Encrypted Channel</span><br>                 <span style='color:#999;font-size:10px;'>감염된 소규모 장비를 C2 프록시로 활용</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_4d33c1a5d4ba85277f7dd5c0930fec09.setContent(html_f83d0145312ebd04cf07523725abf99b);
+            
+        
+
+        ant_path_020eda9d403794e9c9933c511eb85197.bindPopup(popup_4d33c1a5d4ba85277f7dd5c0930fec09)
+        ;
+
+        
+    
+    
+            var marker_6dcc9b0cfecd29ef5fd2930fd916c50c = L.marker(
+                [39.5, -98.35],
+                {
+}
+            ).addTo(map_ef25ddec4e58d501781e2d3d6bf462de);
+        
+    
+            var icon_be50accbb6e460dad6f0ff1ab5adb8a7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_77dbc720b44573044918a535aee7b1c3 = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var html_b475189f53b3d008035255e69962b2e6 = $(`<div id="html_b475189f53b3d008035255e69962b2e6" style="width: 100.0%; height: 100.0%;">     <div style='font-family:-apple-system,BlinkMacSystemFont,sans-serif;width:480px;background:#111;color:#e0e0e0;padding:14px;border-radius:8px;border:1px solid #333;'>         <div style='margin-bottom:10px;'>             <span style='color:#f5a623;font-size:15px;font-weight:700;'>Volt Typhoon</span>             &nbsp;<span style='color:#aaa;font-size:11px;'>Bronze Silhouette</span><br>             <div style='display:inline-block;background:#f5a62322;color:#f5a623;border:1px solid #f5a62355;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;'>핵심 인프라 장기 디지털 매복 (유사시 마비 목적)</div>         </div>         <div style='background:#1a1a1a;border-radius:6px;padding:8px 0;margin-bottom:8px;'>             <div style='padding:4px 10px;font-size:11px;color:#666;font-weight:600;letter-spacing:1px;'>MITRE ATT&CK FRAMEWORK</div>             <table style='width:100%;border-collapse:collapse;'>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e74c3c22;color:#e74c3c;border:1px solid #e74c3c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Initial Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exploit Public-Facing App</span><br>                 <span style='color:#999;font-size:10px;'>소규모 라우터·VPN 장비 취약점으로 초기 침투</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e67e2222;color:#e67e22;border:1px solid #e67e2255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Execution</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Command-Line Interface</span><br>                 <span style='color:#999;font-size:10px;'>LOLBins(정상 OS 도구) 활용으로 흔적 최소화</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#f1c40f22;color:#f1c40f;border:1px solid #f1c40f55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Persistence</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Valid Accounts / Scheduled Task</span><br>                 <span style='color:#999;font-size:10px;'>정상 계정 탈취 + 예약 작업으로 장기 잠복</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Privilege Escalation</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Valid Accounts</span><br>                 <span style='color:#999;font-size:10px;'>탈취한 관리자 계정으로 권한 확보</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Defense Evasion</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Living-off-the-Land (LOLBins)</span><br>                 <span style='color:#999;font-size:10px;'>보안 솔루션 우회 — 정상 도구만 사용</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#3498db22;color:#3498db;border:1px solid #3498db55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Credential Access</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Credential Dumping</span><br>                 <span style='color:#999;font-size:10px;'>시스템 자격증명 탈취</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#9b59b622;color:#9b59b6;border:1px solid #9b59b655;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Discovery</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Network Service Scanning</span><br>                 <span style='color:#999;font-size:10px;'>OT/ICS 시스템 구조 파악</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#e91e8c22;color:#e91e8c;border:1px solid #e91e8c55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Lateral Movement</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Remote Services</span><br>                 <span style='color:#999;font-size:10px;'>내부 OT 네트워크로 이동</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#00bcd422;color:#00bcd4;border:1px solid #00bcd455;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Collection</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Data from Local System</span><br>                 <span style='color:#999;font-size:10px;'>인프라 제어 시스템 설계 정보 수집</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#ff572222;color:#ff5722;border:1px solid #ff572255;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Exfiltration</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Exfiltration Over C2</span><br>                 <span style='color:#999;font-size:10px;'>유사시 마비 명령 대기 — 즉각 유출보다 잠복 우선</span>             </td>         </tr>         <tr>             <td style='padding:5px 8px;vertical-align:top;white-space:nowrap;'>                 <span style='background:#607d8b22;color:#607d8b;border:1px solid #607d8b55;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block;'>Command & Control</span>             </td>             <td style='padding:5px 8px;vertical-align:top;'>                 <span style='color:#fff;font-weight:600;font-size:11px;'>Proxy / Encrypted Channel</span><br>                 <span style='color:#999;font-size:10px;'>감염된 소규모 장비를 C2 프록시로 활용</span>             </td>         </tr></table>         </div>         <div style='font-size:10px;color:#555;text-align:right;'>출처: 유도진, 중국 배후의 주요 APT 그룹들의 공격 패턴 및 전략 분석 (KAIS, 2024)</div>     </div>     </div>`)[0];
+                popup_77dbc720b44573044918a535aee7b1c3.setContent(html_b475189f53b3d008035255e69962b2e6);
+            
+        
+
+        marker_6dcc9b0cfecd29ef5fd2930fd916c50c.bindPopup(popup_77dbc720b44573044918a535aee7b1c3)
+        ;
+
+        
+    
+    
+            marker_6dcc9b0cfecd29ef5fd2930fd916c50c.bindTooltip(
+                `<div>
+                     🎯 Volt Typhoon — 미국 전력·수도 기반시설
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6dcc9b0cfecd29ef5fd2930fd916c50c.setIcon(icon_be50accbb6e460dad6f0ff1ab5adb8a7);
+            
+</script>
+</html>
